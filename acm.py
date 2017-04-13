@@ -52,6 +52,7 @@ def validate(event, context):
         account_id = account_id.translate(None, '-')
 
         # Always log what we're confirming
+        print("Validation URL: '%s'" % url)
         print("Domain: '%s'" % domain)
         print("Account ID: '%s'" % account_id)
         print("Region: '%s'" % region)
