@@ -22,8 +22,6 @@ accountid_re = re.compile(".*<b>AWS account number</b>.*?<td class='right-column
 region_re = re.compile(".*<b>AWS Region</b>.*?<td class='right-column'>\s+(.*?)\s.*", re.DOTALL)
 certid_re = re.compile(".*<b>Certificate identifier</b>.*?<td class='right-column'>\s+(.*?)\s.*", re.DOTALL)
 
-acm = boto3.client('acm')
-
 def panic(msg):
     raise Exception(msg)
 
@@ -59,6 +57,7 @@ def validate(event, context):
         print("Certificate ID: '%s'" % cert_id)
 
         # Check if the cert is pending validation
+        acm = boto3.client('acm', region_name=region)
         cert = acm.describe_certificate(CertificateArn="arn:aws:acm:%s:%s:certificate/%s"
             % (region, account_id, cert_id))
         logging.debug(cert)
