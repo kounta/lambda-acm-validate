@@ -62,9 +62,6 @@ def validate(event, context):
             % (region, account_id, cert_id))
         logging.debug(cert)
 
-        if cert['Certificate']['DomainName'] != domain:
-            panic("Couldn't match confirmation to certificate domain!")
-
         if cert['Certificate']['Status'] != 'PENDING_VALIDATION':
             panic("Confirmation certificate is not pending validation!")
 
