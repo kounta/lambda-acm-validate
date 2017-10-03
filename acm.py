@@ -14,7 +14,7 @@ if os.getenv('DEBUG') != None:
     logging.basicConfig(level=logging.DEBUG)
     mechlog.setLevel(logging.DEBUG)
 
-confirm_url = re.compile("https://certificates.amazon.com/approvals\?[A-Za-z0-9=&-]+")
+confirm_url = re.compile("https://.*\.certificates.amazon.com/approvals\?[A-Za-z0-9=&-]+")
 approval_text = re.compile("You have approved")
 
 domain_re = re.compile(".*<b>Domain name</b>.*?<td class='right-column'>\s+(.*?)\s.*", re.DOTALL)
