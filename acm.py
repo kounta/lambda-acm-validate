@@ -30,7 +30,7 @@ def validate(event, context):
     match = confirm_url.search(msg['content'])
 
     # Ignore emails that don't match the certificate confirm URL
-    if !match:
+    if not match:
         return
 
     url = match.group(0)
